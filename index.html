@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Lottery - Win Daily Cash Prizes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #FFD700;
+            --primary-dark: #D4AF37;
+            --casino-red: #C62828;
+            --casino-green: #2E7D32;
+            --casino-blue: #1565C0;
+            --dark: #0A0A0A;
+            --darker: #050505;
+            --light: #F8F9FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            padding: 15px 0;
+            background: rgba(10, 10, 10, 0.95);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+            letter-spacing: 1px;
+            padding: 0 10px;
+            word-wrap: break-word;
+        }
+
+        .logo span {
+            color: #ff9933;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 30px 0 20px;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            padding: 0 10px;
+            word-wrap: break-word;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            padding: 0 10px;
+            word-wrap: break-word;
+        }
+
+        .winner-ticker {
+            background: linear-gradient(90deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.2) 50%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 15px auto;
+            max-width: 95%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .winner-ticker:before,
+        .winner-ticker:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .winner-ticker:before {
+            top: 0;
+        }
+
+        .winner-ticker:after {
+            bottom: 0;
+        }
+
+        .ticker-content {
+            display: flex;
+            animation: tickerScroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .ticker-item {
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .ticker-item i {
+            color: var(--primary);
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .ticker-item span {
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Prize Structure */
+        .prize-structure {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .prize-structure h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .prize-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .prize-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .prize-rank {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .prize-amount {
+            font-weight: 700;
+        }
+
+        /* Countdown */
+        .countdown {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 95%;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+            100% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+        }
+
+        .countdown-title {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .countdown-unit {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            min-width: 55px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-unit:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            color: var(--light);
+            margin-top: 5px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .card-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* Payment Instructions */
+        .payment-instructions {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .payment-instructions:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            z-index: -1;
+        }
+
+        .payment-instructions p {
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .payment-instructions ol {
+            padding-left: 20px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+        }
+
+        .payment-instructions li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+        }
+
+        .payment-instructions li strong {
+            color: var(--primary);
+        }
+
+        .upi-id-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .upi-id {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-align: center;
+            word-break: break-all;
+        }
+
+        .btn-copy {
+            background: var(--casino-blue);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-copy:hover {
+            background: #1a73e8;
+            transform: translateY(-2px);
+        }
+
+        .qr-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .qr-section:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            animation: borderPulse 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes borderPulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        #qrcode {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        #qrcode canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .qr-note {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #666;
+            max-width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Entry Options */
+        .entry-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .entry-option {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--casino-blue);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entry-option:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .entry-option:hover:before {
+            left: 100%;
+        }
+
+        .entry-option.selected {
+            border-color: var(--primary);
+            background: rgba(255, 215, 0, 0.1);
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .entry-option.popular {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: var(--casino-red);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            animation: pulse 2s infinite alternate;
+        }
+
+        .entry-price {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin: 12px 0;
+            font-weight: 800;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .entry-option h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .entry-option p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+        }
+
+        /* Leaderboard */
+        .leaderboard-container {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            width: 100%;
+        }
+
+        .leaderboard {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .leaderboard th {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 10px 12px;
+            text-align: left;
+            color: var(--primary);
+            position: sticky;
+            top: 0;
+            font-size: 0.9rem;
+        }
+
+        .leaderboard td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .leaderboard tr:last-child td {
+            border-bottom: none;
+        }
+
+        .leaderboard tr {
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard tr:hover {
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .highlight-entry {
+            background: rgba(255, 215, 0, 0.15) !important;
+            animation: highlightPulse 2s infinite;
+        }
+
+        @keyframes highlightPulse {
+            0% { background-color: rgba(255, 215, 0, 0.15); }
+            50% { background-color: rgba(255, 215, 0, 0.25); }
+            100% { background-color: rgba(255, 215, 0, 0.15); }
+        }
+
+        /* Buttons */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .btn:hover:after {
+            opacity: 1;
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 100%; }
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-share {
+            background: linear-gradient(135deg, var(--casino-green) 0%, #1b5e20 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .testimonial {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark);
+            flex-shrink: 0;
+        }
+
+        .winner-photo {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex-grow: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-prize {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 100px;
+        }
+
+        .trust-badge i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .trust-badge span {
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 0 25px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            margin-top: 30px;
+            background: rgba(10, 10, 10, 0.8);
+            width: 100%;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            max-width: 100%;
+            margin: 0 auto 15px;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            padding: 0 10px;
+        }
+
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--casino-green);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 90%;
+            font-size: 0.9rem;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Results Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--darker);
+            border-radius: 12px;
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            border: 2px solid var(--primary);
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-result {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .modal-winners {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .modal-winners h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .winner-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .winner-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Share Gate */
+        .share-gate {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid var(--primary);
+        }
+
+        .share-gate p {
+            margin-bottom: 15px;
+        }
+
+        /* Responsive */
+        @media (min-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .countdown-timer {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-unit {
+                min-width: 60px;
+            }
+            
+            .upi-id-container {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+            }
+            
+            .entry-options {
+                flex-direction: row;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .testimonials {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .prize-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                max-width: 900px;
+            }
+            
+            .testimonials {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .prize-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Very small devices */
+        @media (max-width: 350px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .countdown-unit {
+                min-width: 50px;
+                margin-bottom: 5px;
+            }
+            
+            .ticker-item span {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <div class="modal" id="resultsModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2 class="modal-title">Yesterday's Results</h2>
+            <div class="modal-result" id="userResult">
+                <!-- User's result will be shown here -->
+            </div>
+            <div class="modal-winners">
+                <h3>Top Winners</h3>
+                <div class="winner-list" id="winnerList">
+                    <!-- Winners will be listed here -->
+                </div>
+            </div>
+            <div class="share-gate">
+                <p>Share this lottery with 3 friends to unlock today's results at 8 PM!</p>
+                <button class="btn btn-share" onclick="shareLottery()">
+                    <i class="fas fa-share-alt"></i> SHARE WITH FRIENDS
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">INDIAN <span>LOTTERY</span></div>
+        </header>
+        
+        <section class="hero">
+            <h1>WIN UP TO ₹1,00,000 DAILY</h1>
+            <p>Join India's most trusted lottery platform. Your ₹49 could turn into ₹1,00,000 today!</p>
+            
+            <div class="winner-ticker">
+                <div class="ticker-content">
+                    <div class="ticker-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Rajesh from Mumbai won ₹1,00,000 yesterday!</span>
+                    </div>
+                    <div class="ticker-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Priya from Delhi won ₹50,000 last week!</span>
+                    </div>
+                    <div class="ticker-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Over 2,000 winners this month alone!</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="prize-structure">
+                <h3>Today's Prize Structure</h3>
+                <div class="prize-list">
+                    <div class="prize-item">
+                        <span class="prize-rank">1st Prize</span>
+                        <span class="prize-amount">₹1,00,000</span>
+                    </div>
+                    <div class="prize-item">
+                        <span class="prize-rank">2nd Prize</span>
+                        <span class="prize-amount">₹50,000</span>
+                    </div>
+                    <div class="prize-item">
+                        <span class="prize-rank">3rd Prize</span>
+                        <span class="prize-amount">₹25,000</span>
+                    </div>
+                    <div class="prize-item">
+                        <span class="prize-rank">10 Consolation Prizes</span>
+                        <span class="prize-amount">₹10,000 each</span>
+                    </div>
+                    <div class="prize-item">
+                        <span class="prize-rank">50 Lucky Winners</span>
+                        <span class="prize-amount">₹5,000 each</span>
+                    </div>
+                    <div class="prize-item">
+                        <span class="prize-rank">100 Participation Prizes</span>
+                        <span class="prize-amount">₹1,000 each</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="countdown">
+                <div class="countdown-title">Next Draw Closes In:</div>
+                <div class="countdown-timer">
+                    <div>
+                        <div class="countdown-unit" id="hours">08</div>
+                        <div class="countdown-label">HOURS</div>
+                    </div>
+                    <div>
+                        <div class="countdown-unit" id="minutes">23</div>
+                        <div class="countdown-label">MINUTES</div>
+                    </div>
+                    <div>
+                        <div class="countdown-unit" id="seconds">47</div>
+                        <div class="countdown-label">SECONDS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title">How to Play & Win</h2>
+            
+            <div class="payment-instructions">
+                <p><strong>Follow these simple steps to win big:</strong></p>
+                <ol>
+                    <li><strong>Select your entry option</strong> below (₹29 or ₹49)</li>
+                    <li><strong>Copy our UPI ID</strong> or scan the QR code with your payment app</li>
+                    <li><strong>Send the exact amount</strong> to complete your payment</li>
+                    <li><strong>Enter your details</strong> and transaction ID below</li>
+                    <li><strong>Check back at 8 PM</strong> to see if you've won!</li>
+                </ol>
+                
+                <div class="upi-id-container">
+                    <div class="upi-id" id="upiId">keanjohn72@oksbi</div>
+                    <button class="btn-copy" onclick="copyUpiId()">
+                        <i class="fas fa-copy"></i> Copy UPI ID
+                    </button>
+                </div>
+                
+                <div class="qr-section">
+                    <div id="qrcode"></div>
+                    <div class="qr-note">Scan this QR code with any UPI app to pay instantly</div>
+                </div>
+            </div>
+
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure & Encrypted Payments</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-trophy"></i>
+                    <span>Guaranteed Daily Winners</span>
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-clock"></i>
+                    <span>Instant Payment Processing</span>
+                </div>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title">Choose Your Entry</h2>
+            
+            <div class="entry-options">
+                <div class="entry-option" data-amount="29" onclick="selectOption(this)">
+                    <h3>Standard Entry</h3>
+                    <div class="entry-price">₹29</div>
+                    <p>Good chance to win</p>
+                </div>
+                <div class="entry-option selected popular" data-amount="49" onclick="selectOption(this)">
+                    <div class="popular-tag">MOST POPULAR</div>
+                    <h3>Premium Entry</h3>
+                    <div class="entry-price">₹49</div>
+                    <p>3x better winning odds</p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Your Full Name</label>
+                <input type="text" class="form-control" id="userName" placeholder="Enter your name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Transaction ID (11-22 digits)</label>
+                <input type="text" class="form-control" id="transactionId" placeholder="Enter your transaction ID" maxlength="22">
+            </div>
+            
+            <button class="btn" onclick="submitEntry()">
+                <i class="fas fa-ticket-alt"></i> SUBMIT ENTRY & WIN
+            </button>
+
+            <button class="btn btn-share" onclick="shareLottery()">
+                <i class="fas fa-share-alt"></i> SHARE TO INCREASE WINNING CHANCES
+            </button>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title">Today's Participants</h2>
+            <p style="text-align: center; margin-bottom: 15px;">See who's already entered today's draw</p>
+            
+            <div class="leaderboard-container">
+                <table class="leaderboard">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- Entries will be added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="participantsInfo" style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: var(--primary);">
+                Showing 40 of 1,248 participants
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title">Recent Winners</h2>
+            
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "I won ₹1,00,000 on my first try! I couldn't believe it when I got the call. This platform is truly amazing!"
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80" class="winner-photo" alt="Rajesh">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Rajesh, Mumbai</div>
+                            <div class="testimonial-prize">Won ₹1,00,000</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "I've won ₹50,000 twice now! The process is so simple and payments are quick. I received my winnings within 2 hours."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80" class="winner-photo" alt="Priya">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Priya, Delhi</div>
+                            <div class="testimonial-prize">Won ₹50,000</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Received my ₹25,000 winnings within hours of the draw. Can't wait to play again! This is the most genuine lottery platform."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&q=80" class="winner-photo" alt="Amit">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Amit, Bangalore</div>
+                            <div class="testimonial-prize">Won ₹25,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2 class="card-title">Last Draw Winners</h2>
+            <p style="text-align: center; margin-bottom: 15px;">Congratulations to yesterday's winners!</p>
+            
+            <div class="leaderboard-container">
+                <table class="leaderboard">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Name</th>
+                            <th>Prize</th>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lastWinnersBody">
+                        <tr>
+                            <td>1</td>
+                            <td>Rajesh Kumar</td>
+                            <td>₹1,00,000</td>
+                            <td>Mumbai</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Priya Mehta</td>
+                            <td>₹50,000</td>
+                            <td>Delhi</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Amit Sharma</td>
+                            <td>₹25,000</td>
+                            <td>Bangalore</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Neha Patel</td>
+                            <td>₹10,000</td>
+                            <td>Ahmedabad</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Vikram Singh</td>
+                            <td>₹10,000</td>
+                            <td>Jaipur</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn" onclick="checkResults()">
+                    <i class="fas fa-trophy"></i> CHECK IF YOU WON YESTERDAY
+                </button>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2 class="card-title">Join Winners Group</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Winners announced daily at 8 PM in our exclusive WhatsApp group</p>
+            <a href="https://chat.whatsapp.com/DK5XLAWhq4AEgBsv34Sd2m" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> JOIN WINNERS GROUP
+            </a>
+        </section>
+        
+        <footer>
+            <div class="disclaimer">
+                This is a promotional lottery contest. Winners are selected fairly from verified entries. 
+                Cash prizes are transferred only to valid UPI-linked bank accounts. 
+                Entries submitted without real payment are invalid. 18+ only. Play responsibly.
+            </div>
+            
+            <div class="footer-links">
+                <a href="#" class="footer-link">Terms & Conditions</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Contact Support</a>
+                <a href="#" class="footer-link">Responsible Gaming</a>
+                <a href="#" class="footer-link">FAQ</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Extended list of participants with Indian names
+        const sampleEntries = [
+            { name: "Rajesh Kumar", amount: "49", time: "12:45 PM" },
+            { name: "Priya Mehta", amount: "49", time: "12:32 PM" },
+            { name: "Amit Sharma", amount: "29", time: "12:15 PM" },
+            { name: "Neha Patel", amount: "49", time: "11:58 AM" },
+            { name: "Vikram Singh", amount: "49", time: "11:42 AM" },
+            { name: "Sunita Reddy", amount: "29", time: "11:30 AM" },
+            { name: "Rahul Desai", amount: "49", time: "11:15 AM" },
+            { name: "Divya Mishra", amount: "49", time: "10:58 AM" },
+            { name: "Arun Joshi", amount: "29", time: "10:42 AM" },
+            { name: "Ananya Gupta", amount: "49", time: "10:30 AM" },
+            { name: "Sanjay Verma", amount: "29", time: "10:15 AM" },
+            { name: "Pooja Choudhury", amount: "49", time: "10:02 AM" },
+            { name: "Karan Malhotra", amount: "29", time: "09:48 AM" },
+            { name: "Meera Iyer", amount: "49", time: "09:35 AM" },
+            { name: "Rohan Kapoor", amount: "29", time: "09:20 AM" },
+            { name: "Deepak Sharma", amount: "49", time: "09:05 AM" },
+            { name: "Shreya Singh", amount: "29", time: "08:52 AM" },
+            { name: "Vivek Nair", amount: "49", time: "08:40 AM" },
+            { name: "Anjali Rao", amount: "29", time: "08:25 AM" },
+            { name: "Manish Gupta", amount: "49", time: "08:10 AM" },
+            { name: "Sneha Deshpande", amount: "49", time: "07:55 AM" },
+            { name: "Ravi Tiwari", amount: "29", time: "07:40 AM" },
+            { name: "Kavita Joshi", amount: "49", time: "07:25 AM" },
+            { name: "Nikhil Pandey", amount: "29", time: "07:10 AM" },
+            { name: "Sarika Menon", amount: "49", time: "06:55 AM" },
+            { name: "Alok Kumar", amount: "29", time: "06:40 AM" },
+            { name: "Divya Reddy", amount: "49", time: "06:25 AM" },
+            { name: "Prakash Singh", amount: "29", time: "06:10 AM" },
+            { name: "Anjali Mehta", amount: "49", time: "05:55 AM" },
+            { name: "Vishal Malhotra", amount: "29", time: "05:40 AM" },
+            { name: "Sanjana Iyer", amount: "49", time: "05:25 AM" },
+            { name: "Rohit Kapoor", amount: "29", time: "05:10 AM" },
+            { name: "Neha Sharma", amount: "49", time: "04:55 AM" },
+            { name: "Amitabh Patel", amount: "29", time: "04:40 AM" },
+            { name: "Pooja Gupta", amount: "49", time: "04:25 AM" },
+            { name: "Rajiv Nair", amount: "29", time: "04:10 AM" },
+            { name: "Sunil Desai", amount: "49", time: "03:55 AM" },
+            { name: "Kiran Reddy", amount: "29", time: "03:40 AM" },
+            { name: "Arjun Mehta", amount: "49", time: "03:25 AM" },
+            { name: "Priyanka Singh", amount: "29", time: "03:10 AM" }
+        ];
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load sample entries
+            updateLeaderboard(sampleEntries);
+            
+            // Start countdown
+            startCountdown();
+            
+            // Generate QR code
+            generateQrCode();
+            
+            // Check if user has played before
+            checkPreviousEntry();
+            
+            // Setup modal close button
+            document.getElementById('closeModal').addEventListener('click', function() {
+                document.getElementById('resultsModal').classList.remove('active');
+            });
+        });
+
+        // Check if user has played before
+        function checkPreviousEntry() {
+            const userName = localStorage.getItem('userName');
+            const userEntryTime = localStorage.getItem('userEntryTime');
+            
+            if (userName && userEntryTime) {
+                // Show a welcome back message
+                showToast(`Welcome back, ${userName}! Check if you won yesterday's draw.`);
+            }
+        }
+
+        // Generate QR code for UPI payment
+        function generateQrCode() {
+            // Clear previous QR code if any
+            const qrContainer = document.getElementById("qrcode");
+            qrContainer.innerHTML = "";
+            
+            const upiId = document.getElementById('upiId').innerText;
+            const amount = document.querySelector('.entry-option.selected').dataset.amount;
+            
+            // UPI payment URL format
+            const upiUrl = `upi://pay?pa=${upiId}&pn=IndianLottery&am=${amount}&cu=INR`;
+            
+            // Generate QR code
+            const qrcode = new QRCode(qrContainer, {
+                text: upiUrl,
+                width: 180,
+                height: 180,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+
+        // Copy UPI ID to clipboard
+        function copyUpiId() {
+            const upiId = document.getElementById('upiId').innerText;
+            navigator.clipboard.writeText(upiId).then(() => {
+                showToast('UPI ID copied to clipboard!');
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.innerText = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Select entry option
+        function selectOption(element) {
+            document.querySelectorAll('.entry-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            
+            // Regenerate QR code with new amount
+            generateQrCode();
+        }
+
+        // Submit entry
+        function submitEntry() {
+            const name = document.getElementById('userName').value.trim();
+            const txnId = document.getElementById('transactionId').value.trim();
+            const amount = document.querySelector('.entry-option.selected').dataset.amount;
+            
+            if (!name) {
+                showToast('Please enter your name');
+                return;
+            }
+            
+            if (!txnId || txnId.length < 11 || txnId.length > 22 || !/^\d+$/.test(txnId)) {
+                showToast('Please enter a valid transaction ID (11-22 digits only)');
+                return;
+            }
+            
+            // Save user details to localStorage
+            localStorage.setItem('userName', name);
+            localStorage.setItem('userEntryTime', new Date().toISOString());
+            
+            // Add user entry
+            const now = new Date();
+            const time = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+            
+            const userEntry = {
+                name: name,
+                amount: amount,
+                time: time
+            };
+            
+            // Add to beginning of array
+            sampleEntries.unshift(userEntry);
+            
+            // Update leaderboard
+            updateLeaderboard(sampleEntries);
+            
+            // Highlight user's entry
+            highlightUserEntry(name);
+            
+            // Clear form
+            document.getElementById('userName').value = '';
+            document.getElementById('transactionId').value = '';
+            
+            // Show success message
+            showToast('Entry submitted successfully! Check back at 8 PM to see if you won!');
+        }
+
+        // Check results function
+        function checkResults() {
+            const userName = localStorage.getItem('userName');
+            const modal = document.getElementById('resultsModal');
+            const userResult = document.getElementById('userResult');
+            
+            if (!userName) {
+                showToast('Please enter a lottery first to check results');
+                return;
+            }
+            
+            // Simulate result (in a real app, this would come from a server)
+            const didWin = Math.random() > 0.9; // 10% chance to win
+            const almostWon = Math.random() > 0.5; // 50% chance to almost win
+            
+            if (didWin) {
+                const prizes = ['₹1,00,000', '₹50,000', '₹25,000', '₹10,000', '₹5,000', '₹1,000'];
+                const prize = prizes[Math.floor(Math.random() * prizes.length)];
+                userResult.innerHTML = `Congratulations <strong>${userName}</strong>! You won ${prize} in yesterday's draw!`;
+            } else if (almostWon) {
+                userResult.innerHTML = `You were so close <strong>${userName}</strong>! You almost won ₹50,000 yesterday. Try again today!`;
+            } else {
+                userResult.innerHTML = `Sorry <strong>${userName}</strong>, you didn't win yesterday. But today could be your lucky day!`;
+            }
+            
+            // Show the modal
+            modal.classList.add('active');
+        }
+
+        // Share lottery with friends
+        function shareLottery() {
+            const shareText = "I just entered the Indian Lottery with a chance to win ₹1,00,000 daily! Join me for exciting cash prizes every day!";
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Indian Lottery - Win Daily Cash Prizes',
+                    text: shareText,
+                    url: window.location.href
+                }).then(() => {
+                    // Set a flag that user has shared
+                    localStorage.setItem('hasShared', 'true');
+                    showToast('Thanks for sharing! Results will be available at 8 PM.');
+                }).catch(err => {
+                    console.log('Error sharing:', err);
+                });
+            } else {
+                // Fallback for desktop
+                const shareUrl = window.location.href;
+                prompt("Copy this link to share with friends:", shareUrl);
+                // Set a flag that user has shared
+                localStorage.setItem('hasShared', 'true');
+                showToast('Thanks for sharing! Results will be available at 8 PM.');
+            }
+        }
+
+        // Update leaderboard
+        function updateLeaderboard(entries) {
+            const leaderboardBody = document.getElementById('leaderboardBody');
+            leaderboardBody.innerHTML = '';
+            
+            entries.slice(0, 40).forEach((entry, index) => {
+                const row = document.createElement('tr');
+                row.dataset.name = entry.name;
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${entry.name}</td>
+                    <td>₹${entry.amount}</td>
+                    <td>${entry.time}</td>
+                `;
+                
+                leaderboardBody.appendChild(row);
+            });
+        }
+
+        // Highlight user's entry
+        function highlightUserEntry(userName) {
+            document.querySelectorAll('#leaderboardBody tr').forEach(row => {
+                row.classList.remove('highlight-entry');
+                if (row.dataset.name === userName) {
+                    row.classList.add('highlight-entry');
+                    
+                    // Scroll to user's entry
+                    setTimeout(() => {
+                        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+                }
+            });
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            function update() {
+                const now = new Date();
+                const target = new Date();
+                
+                // Set target to 8:00 PM IST (UTC+5:30)
+                target.setUTCHours(14, 30, 0, 0);
+                
+                // If it's already past 8 PM, set for next day
+                if (now > target) {
+                    target.setUTCDate(target.getUTCDate() + 1);
+                }
+                
+                const diff = target - now;
+                
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            update();
+            setInterval(update, 1000);
+        }
+    </script>
+</body>
+</html>
