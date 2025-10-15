@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitter Deals | Buy 1 Get 1 Free Jewelry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .deal-tag {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-amber-700">GLITTER ✨</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-gray-700 hover:text-amber-600">Home</a>
+                <a href="#" class="font-bold text-amber-600 border-b-2 border-amber-600">B1G1</a>
+                <a href="#" class="text-gray-700 hover:text-amber-600">Necklaces</a>
+                <a href="#" class="text-gray-700 hover:text-amber-600">Bracelets</a>
+                <a href="#" class="text-gray-700 hover:text-amber-600">Earrings</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <i data-feather="search"></i>
+                </button>
+                <button class="p-2 rounded-full hover:bg-gray-100">
+                    <i data-feather="user"></i>
+                </button>
+                <button class="p-2 rounded-full hover:bg-gray-100 relative">
+                    <i data-feather="shopping-bag"></i>
+                    <span class="absolute -top-1 -right-1 bg-amber-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                </button>
+                <button class="md:hidden p-2 rounded-full hover:bg-gray-100">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <div class="relative overflow-hidden">
+        <img src="https://palmonas.com/cdn/shop/files/B1G1_red_look_web_ban.jpg?crop=center&height=794&v=1755587291&width=2000" 
+             alt="Buy 1 Get 1 Free Deal" 
+             class="w-full h-auto md:h-[500px] object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">BUY 1 GET 1 FREE</h1>
+                <p class="text-xl md:text-2xl text-white mb-6">Limited Time Offer on Selected Jewelry</p>
+                <button class="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    SHOP NOW
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Filters -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 md:mb-0">Buy 1 Get 1 Free Collection</h2>
+            <div class="flex items-center space-x-4">
+                <span class="text-gray-600">Sort by:</span>
+                <select class="border border-gray-300 rounded-md px-4 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <option>Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Newest</option>
+                    <option>Best Selling</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Product Card 1 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="https://palmonas.com/cdn/shop/files/01_e869a853-ae2b-4543-8f22-61455b80f6a6.webp?v=1744528231&width=1" 
+                         alt="Hearts All Over Bracelet" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded deal-tag">
+                        BUY 1 GET 1
+                    </div>
+                    <button class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-amber-100">
+                        <i data-feather="heart"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Hearts All Over Bracelet</h3>
+                    <div class="flex items-center mb-2">
+                        <span class="text-amber-700 font-bold">₹ 2,229.00</span>
+                        <span class="text-gray-500 text-sm line-through ml-2">₹ 3,184.00</span>
+                        <span class="text-green-600 text-sm font-bold ml-2">(30%)</span>
+                    </div>
+                    <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-md transition duration-300 flex items-center justify-center">
+                        <i data-feather="shopping-bag" class="mr-2"></i> Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="https://palmonas.com/cdn/shop/files/Artboard9_4.jpg?v=1744526847&width=1" 
+                         alt="Crystal Love Bangle Bracelet" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded deal-tag">
+                        BUY 1 GET 1
+                    </div>
+                    <button class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-amber-100">
+                        <i data-feather="heart"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Crystal Love Bangle Bracelet</h3>
+                    <div class="flex items-center mb-2">
+                        <span class="text-amber-700 font-bold">₹ 2,346.00</span>
+                        <span class="text-gray-500 text-sm line-through ml-2">₹ 3,799.00</span>
+                        <span class="text-green-600 text-sm font-bold ml-2">(38%)</span>
+                    </div>
+                    <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-md transition duration-300 flex items-center justify-center">
+                        <i data-feather="shopping-bag" class="mr-2"></i> Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="https://palmonas.com/cdn/shop/files/PM-EARRINGS-032_3_0040.jpg?v=1744528692&width=1" 
+                         alt="Athena Solitaire Hoop Earrings" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded deal-tag">
+                        BUY 1 GET 1
+                    </div>
+                    <button class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-amber-100">
+                        <i data-feather="heart"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Athena Solitaire Hoop Earrings</h3>
+                    <div class="flex items-center mb-2">
+                        <span class="text-amber-700 font-bold">₹ 2,258.00</span>
+                        <span class="text-gray-500 text-sm line-through ml-2">₹ 3,226.00</span>
+                        <span class="text-green-600 text-sm font-bold ml-2">(30%)</span>
+                    </div>
+                    <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-md transition duration-300 flex items-center justify-center">
+                        <i data-feather="shopping-bag" class="mr-2"></i> Add to Bag
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300">
+                <div class="relative">
+                    <img src="https://palmonas.com/cdn/shop/files/Artboard14_2.jpg?v=1744526375&width=1" 
+                         alt="Nail Bangle Bracelet" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded deal-tag">
+                        BUY 1 GET 1
+                    </div>
+                    <button class="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-amber-100">
+                        <i data-feather="heart"></i>
+                    </button>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1">Nail Bangle Bracelet</h3>
+                    <div class="flex items-center mb-2">
+                        <span class="text-amber-700 font-bold">₹ 2,258.00</span>
+                        <span class="text-gray-500 text-sm line-through ml-2">₹ 3,226.00</span>
+                        <span class="text-green-600 text-sm font-bold ml-2">(30%)</span>
+                    </div>
+                    <button class="w-full bg-amber-600 hover:bg-amber-700 text-white py-2 rounded-md transition duration-300 flex items-center justify-center">
+                        <i data-feather="shopping-bag" class="mr-2"></i> Add to Bag
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <div class="mt-12 text-center">
+            <button class="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                Load More
+            </button>
+        </div>
+    </main>
+
+    <!-- Shipping Info -->
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <div class="hidden md:block">
+                <img src="https://palmonas.com/cdn/shop/files/Shipping_-_Web.jpg?v=1700751636&width=1500" 
+                     alt="Shipping Information" 
+                     class="w-full rounded-lg shadow-md">
+            </div>
+            <div class="md:hidden">
+                <img src="https://palmonas.com/cdn/shop/files/Shipping_-_Mobile.jpg?v=1700751663&width=1500" 
+                     alt="Shipping Information" 
+                     class="w-full rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">GLITTER</h3>
+                    <p class="text-gray-300">Fine jewelry for every occasion. Handcrafted with love and care.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Necklaces</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Bracelets</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Earrings</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Rings</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Special Offers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Customer Service</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">FAQs</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Size Guide</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-amber-400">Care Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Stay Connected</h4>
+                    <p class="text-gray-300 mb-4">Subscribe to our newsletter for exclusive offers and updates.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md w-full focus:outline-none text-gray-800">
+                        <button class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-r-md">
+                            <i data-feather="arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-300 hover:text-amber-400"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-amber-400"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-amber-400"><i data-feather="twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-amber-400"><i data-feather="pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2023 Glitter Jewelry. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-amber-400">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-amber-400">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Simple animation for product cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            productCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
