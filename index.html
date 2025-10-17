@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AraMack — Demi-Gold Buy 1 Get 1 Collection | Luxury Jewellery</title>
+    <meta name="description" content="Discover luxury demi-gold jewellery collection. Buy 1 Get 1 Free on exquisite pieces crafted for brilliance and everyday elegance.">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #fdfaf7; 
+            --muted: #8a8a8a; 
+            --accent: #1c1c1c;
+            --gold: #d4af37; 
+            --gold-light: #f4e8c1;
+            --gold-dark: #b8941f;
+            --shadow: 0 8px 32px rgba(0,0,0,0.05);
+            --shadow-deep: 0 20px 60px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0 }
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; 
+            background: var(--bg); 
+            color: var(--accent); 
+            overflow-x: hidden; 
+            line-height: 1.6;
+        }
+        h1, h2, h3, h4, h5, .brand, .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        a { text-decoration: none; color: inherit }
+        
+        /* Header */
+        header { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(238, 238, 238, 0.8); 
+            padding: 16px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .brand { 
+            font-weight: 700; 
+            font-size: 24px; 
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand i {
+            color: var(--gold);
+            font-size: 20px;
+        }
+        .subtitle { 
+            font-size: 13px; 
+            color: var(--muted);
+            margin-top: 2px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .nav-links a {
+            position: relative;
+            transition: var(--transition);
+        }
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .cart { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .cart:hover {
+            color: var(--gold);
+        }
+        .cart .count { 
+            background: var(--gold); 
+            color: #fff; 
+            min-width: 22px; 
+            height: 22px; 
+            border-radius: 50%; 
+            display: grid; 
+            place-items: center; 
+            font-size: 13px; 
+            font-weight: 700;
+        }
+        
+        /* Hero */
+        .hero { 
+            position: relative; 
+            height: 90vh; 
+            min-height: 600px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            overflow: hidden;
+        }
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .hero img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            filter: brightness(0.85);
+        }
+        .hero::after { 
+            content: ""; 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(253,250,247,0.8) 85%, var(--bg) 100%); 
+        }
+        .hero-content { 
+            position: relative; 
+            text-align: center; 
+            max-width: 800px; 
+            padding: 0 20px; 
+            z-index: 2; 
+            animation: fadeUp 1.2s ease;
+        }
+        .hero h1 { 
+            font-size: 52px; 
+            font-weight: 600; 
+            letter-spacing: 1px; 
+            margin-bottom: 16px; 
+            color: #2c2c2c;
+            line-height: 1.2;
+        }
+        .hero p { 
+            font-size: 18px; 
+            color: #555; 
+            margin-bottom: 32px; 
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero .btn-primary { 
+            background: var(--gold); 
+            color: #fff; 
+            border: 0; 
+            padding: 14px 32px; 
+            border-radius: 999px; 
+            font-weight: 600; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .hero .btn-primary:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        .hero-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 3;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        @keyframes fadeUp { 
+            from { opacity: 0; transform: translateY(30px) } 
+            to { opacity: 1; transform: none }
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 20px;
+            background: white;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        .feature i {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .feature h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        .feature p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+        
+        /* Collection */
+        .collection {
+            padding: 80px 0;
+            position: relative;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-header p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Container and grid */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px;
+        }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px;
+        }
+        .card { 
+            background: #fff; 
+            border-radius: 16px; 
+            box-shadow: var(--shadow); 
+            overflow: hidden; 
+            display: flex; 
+            flex-direction: column; 
+            transition: var(--transition);
+            position: relative;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
+        }
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-deep);
+        }
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--gold);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        .media { 
+            width: 100%; 
+            padding-bottom: 100%; 
+            position: relative; 
+            background: #f8f8f8;
+            overflow: hidden;
+        }
+        .media img { 
+            position: absolute; 
+            inset: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .card:hover .media img {
+            transform: scale(1.05);
+        }
+        .info { 
+            padding: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            flex: 1;
+        }
+        .title { 
+            font-size: 17px; 
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .price { 
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .compare { 
+            font-size: 14px; 
+            color: var(--muted); 
+            text-decoration: line-through; 
+            margin-left: 6px;
+        }
+        .discount {
+            color: #e74c3c;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .actions { 
+            margin-top: auto; 
+            display: flex; 
+            gap: 10px;
+        }
+        .btn { 
+            border: 0; 
+            border-radius: 999px; 
+            padding: 10px 16px; 
+            font-size: 14px; 
+            font-weight: 600; 
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .btn.primary { 
+            background: var(--accent); 
+            color: #fff;
+            flex: 1;
+        }
+        .btn.primary:hover {
+            background: var(--gold);
+            transform: translateY(-2px);
+        }
+        .btn.ghost { 
+            background: #fff; 
+            border: 1px solid #ddd; 
+            color: var(--accent);
+        }
+        .btn.ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #fdfaf7, white);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: var(--gold-light);
+            font-family: serif;
+            line-height: 1;
+        }
+        .testimonial p {
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .author-info h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        .author-info p {
+            font-size: 14px;
+            color: var(--muted);
+            margin: 0;
+            font-style: normal;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            color: #2c2c2c;
+            text-align: center;
+        }
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .newsletter h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 999px 0 0 999px;
+            font-size: 16px;
+            outline: none;
+        }
+        .newsletter-form button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 24px;
+            border-radius: 0 999px 999px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .newsletter-form button:hover {
+            background: #000;
+        }
+        
+        /* Checkout bar */
+        .checkoutBar { 
+            position: fixed; 
+            left: 0; 
+            right: 0; 
+            bottom: 18px; 
+            display: flex; 
+            justify-content: center; 
+            z-index: 100;
+            padding: 0 20px;
+        }
+        .checkoutInner { 
+            background: #fff; 
+            box-shadow: var(--shadow-deep); 
+            border-radius: 16px; 
+            padding: 16px 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 20px;
+            max-width: 500px;
+            width: 100%;
+        }
+        .checkoutInner label { 
+            font-size: 14px; 
+            color: var(--muted); 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+            cursor: pointer;
+        }
+        .toast { 
+            position: fixed; 
+            right: 18px; 
+            bottom: 18px; 
+            background: var(--accent); 
+            color: #fff; 
+            padding: 12px 18px; 
+            border-radius: 12px; 
+            box-shadow: var(--shadow-deep); 
+            opacity: 0; 
+            transform: translateY(10px); 
+            transition: var(--transition); 
+            z-index: 150;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toast.show { 
+            opacity: 1; 
+            transform: translateY(0);
+        }
+        
+        /* Footer */
+        footer { 
+            background: #1c1c1c;
+            color: #aaa;
+            padding: 60px 20px 30px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        .footer-column ul li a {
+            transition: var(--transition);
+        }
+        .footer-column ul li a:hover {
+            color: var(--gold);
+        }
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+        }
+        .policyBox { 
+            background: #fff; 
+            border-radius: 12px; 
+            padding: 24px; 
+            margin-top: 20px; 
+            box-shadow: var(--shadow); 
+            color: var(--muted);
+            transition: var(--transition);
+        }
+        .policyBox:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-deep);
+        }
+        .policyBox strong {
+            display: block;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .section-header h2 {
+                font-size: 32px;
+            }
+            .checkoutInner {
+                flex-direction: column;
+                gap: 12px;
+                align-items: stretch;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 999px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <div class="brand"><i class="fas fa-gem"></i> AraMack</div>
+        <div class="subtitle">Demi-Gold Luxury. Real Shine, Real Value.</div>
+    </div>
+    <div class="nav-links">
+        <a href="#">Collections</a>
+        <a href="#">Earrings</a>
+        <a href="#">Necklaces</a>
+        <a href="#">Bracelets</a>
+        <a href="#">Rings</a>
+    </div>
+    <div class="cart">
+        <div style="font-size:14px">Bag</div>
+        <div class="count" id="cart-count">0</div>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-slider">
+        <div class="slide active">
+            <img src="https://i.postimg.cc/gJcNhqhx/profile-portrait-of-the-fashion-woman-with-beautiful-golden-mani.jpg" alt="Demi-Gold Jewellery Model">
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Luxury Gold Jewellery">
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1596944946755-8a9cd5f5f3a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Elegant Gold Necklace">
+        </div>
+    </div>
+    <div class="hero-content">
+        <h1>Radiate Confidence with Demi-Gold Elegance</h1>
+        <p>Discover luxury redefined — demi-gold pieces crafted for brilliance, comfort, and everyday glamour. Enjoy our exclusive <b>Buy 1 Get 1 Free</b> event and double your sparkle.</p>
+        <button class="btn-primary" onclick="document.getElementById('collection').scrollIntoView({behavior:'smooth'})">
+            <span>Shop the Collection</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+    <div class="hero-indicators">
+        <div class="indicator active" data-slide="0"></div>
+        <div class="indicator" data-slide="1"></div>
+        <div class="indicator" data-slide="2"></div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature">
+                <i class="fas fa-award"></i>
+                <h3>Premium Quality</h3>
+                <p>Expertly crafted demi-gold pieces with lasting shine and durability</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Free Shipping</h3>
+                <p>Complimentary express shipping on all orders above ₹5,000</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-undo-alt"></i>
+                <h3>Easy Returns</h3>
+                <p>Hassle-free 15-day return policy for complete peace of mind</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gem"></i>
+                <h3>Authentic Craftsmanship</h3>
+                <p>Each piece is meticulously designed and quality checked</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="collection" id="collection">
+    <div class="container">
+        <div class="section-header">
+            <h2>Curated Demi-Gold Favourites</h2>
+            <p>Explore our exclusive collection of demi-gold jewellery, where luxury meets affordability</p>
+        </div>
+        <div class="grid" id="grid"></div>
+    </div>
+</section>
+
+<section class="testimonials">
+    <div class="container">
+        <div class="section-header">
+            <h2>Client Testimonials</h2>
+            <p>Discover what our customers are saying about their AraMack experience</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p>The quality of these demi-gold pieces is exceptional. I've received countless compliments and the buy 1 get 1 offer made it irresistible!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya Sharma">
+                    </div>
+                    <div class="author-info">
+                        <h4>Priya Sharma</h4>
+                        <p>Mumbai</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p>I was skeptical at first, but the pieces have maintained their shine beautifully. The customer service was outstanding too.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya Patel">
+                    </div>
+                    <div class="author-info">
+                        <h4>Ananya Patel</h4>
+                        <p>Delhi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <p>The perfect balance of luxury and affordability. These pieces have become staples in my jewellery collection.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Riya Kapoor">
+                    </div>
+                    <div class="author-info">
+                        <h4>Riya Kapoor</h4>
+                        <p>Bangalore</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <div class="newsletter-content">
+        <h2>Join Our Luxury Circle</h2>
+        <p>Subscribe to receive exclusive offers, early access to new collections, and styling tips</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button>Subscribe <i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="margin-top: 80px; margin-bottom: 40px;">
+    <section>
+        <div class="policyBox">
+            <strong>Terms & Conditions</strong>
+            <p>Offer valid while stocks last. Orders confirmed post-payment. AraMack reserves the right to modify offers anytime. Buy 1 Get 1 Free applies to items of equal or lesser value.</p>
+        </div>
+        <div class="policyBox">
+            <strong>Privacy Policy</strong>
+            <p>Your information is used only for order processing. Razorpay handles payments securely; we never store card details. We respect your privacy and do not share your data with third parties.</p>
+        </div>
+        <div class="policyBox">
+            <strong>Refund & Returns</strong>
+            <p>Returns accepted within 7 days for unworn pieces with original packaging. Refunds processed back to the original payment method after inspection. Exchanges are available for defective items.</p>
+        </div>
+    </section>
+</div>
+
+<div class="checkoutBar">
+    <div class="checkoutInner">
+        <div style="font-size:16px">Total: <b id="total">₹0.00</b></div>
+        <label><input type="checkbox" id="terms"> I accept the terms & conditions</label>
+        <button id="checkout" class="btn primary" disabled>Checkout <i class="fas fa-lock"></i></button>
+    </div>
+</div>
+
+<div id="toast" class="toast">
+    <i class="fas fa-check-circle"></i>
+    <span>Added to bag</span>
+</div>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Shop</h3>
+            <ul>
+                <li><a href="#">All Collections</a></li>
+                <li><a href="#">Necklaces</a></li>
+                <li><a href="#">Earrings</a></li>
+                <li><a href="#">Bracelets</a></li>
+                <li><a href="#">Rings</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Shipping Policy</a></li>
+                <li><a href="#">Returns & Exchanges</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Size Guide</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>About AraMack</h3>
+            <ul>
+                <li><a href="#">Our Story</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">Wholesale</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Connect With Us</h3>
+            <p>Follow us on social media for the latest updates and styling inspiration.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        © 2023 AraMack — Razorpay Test Mode Enabled | Crafted for the Modern Connoisseur
+    </div>
+</footer>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    // Hero Slider
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        currentSlide = (n + slides.length) % slides.length;
+        
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+    }
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+    
+    // Auto-advance slides
+    setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 5000);
+    
+    // Products
+    const products = [
+        {title: "Royal Gold Pendant", price: 2580, img: "https://i.postimg.cc/J4VbkY4c/DSC08591.jpg"},
+        {title: "Classic Gold Bangle", price: 2117, img: "https://i.postimg.cc/9MPcNfZG/bangle-pgb6-24-051-parakkat-jewels-1-60f32cd3-e0d3-4f07-846a-a192863ff465.jpg"},
+        {title: "Elegant Chain Necklace", price: 2111, img: "https://i.postimg.cc/mkbTxGyN/DSC03092-e4b8f15d-3311-4c85-96dd-0553bfd8977d-600x.jpg"},
+        {title: "Delicate Charm Bracelet", price: 2258, img: "https://i.postimg.cc/cCsdqNBT/DSC03372-60ab08fe-9cd3-46ca-995c-295dbfcf3eb4-600x.jpg"},
+        {title: "Daisy Bloom Pendant", price: 2111, img: "https://i.postimg.cc/DZQ7YzL5/DSC08553-600x.jpg"},
+        {title: "Twirl Hoop Earrings", price: 2508, img: "https://i.postimg.cc/gJyGB08K/DSC08999-600x.jpg"},
+        {title: "Crystal Drop Necklace", price: 2229, img: "https://i.postimg.cc/ZnTJkhxx/DSC09027-600x.jpg"},
+        {title: "Enamel Bangle Set", price: 2346, img: "https://i.postimg.cc/tTd9mgWF/enamel-bangle-prgb4-011-parakkat-jewels-1-e94fbeaf-d4c9-481c-bdcd-119c823af391.jpg"},
+        {title: "Golden Heritage Bangle", price: 2644, img: "https://i.postimg.cc/9MPcNfZw/golden-bangle-pgb10-031-parakkat-jewels-1-bc95b72d-eb3f-4c11-9b27-37429f6b894d.jpg"},
+        {title: "Royal Twist Bangle", price: 2269, img: "https://i.postimg.cc/rmGqYpxx/golden-bangle-pgb41a-26-051-parakkat-jewels-1-89ee5098-0f14-48b0-a799-ac10b8827e07.jpg"}
+    ];
+    
+    const grid = document.getElementById('grid');
+    products.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        const discount = Math.round((p.price * 1.3 - p.price) / (p.price * 1.3) * 100);
+        card.innerHTML = `
+            <div class="badge">B1G1 Free</div>
+            <div class="media"><img src="${p.img}" alt="${p.title}" loading="lazy"></div>
+            <div class="info">
+                <div class="title">${p.title}</div>
+                <div>
+                    <span class="price">₹${p.price.toLocaleString('en-IN')}</span>
+                    <span class="compare">₹${(p.price * 1.3).toLocaleString('en-IN')}</span>
+                    <span class="discount">${discount}% OFF</span>
+                </div>
+                <div class="actions">
+                    <button class="btn primary" onclick="add(${i})">
+                        <i class="fas fa-shopping-bag"></i>
+                        Add to bag
+                    </button>
+                    <button class="btn ghost">
+                        <i class="far fa-heart"></i>
+                    </button>
+                </div>
+            </div>`;
+        grid.appendChild(card);
+    });
+    
+    let cart = [];
+    const countEl = document.getElementById('cart-count');
+    const totalEl = document.getElementById('total');
+    
+    function add(i) {
+        cart.push(products[i]);
+        update();
+        toast("Added to bag");
+    }
+    
+    function update() {
+        countEl.textContent = cart.length;
+        const t = cart.reduce((s, p) => s + p.price, 0);
+        totalEl.textContent = '₹' + t.toLocaleString('en-IN');
+        document.getElementById('checkout').disabled = !document.getElementById('terms').checked || cart.length === 0;
+    }
+    
+    function toast(msg) {
+        const t = document.getElementById('toast');
+        t.querySelector('span').textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2000);
+    }
+    
+    document.getElementById('terms').addEventListener('change', e => {
+        document.getElementById('checkout').disabled = !e.target.checked || cart.length === 0;
+    });
+    
+    document.getElementById('checkout').addEventListener('click', () => {
+        if (cart.length === 0) {
+            toast("Your bag is empty");
+            return;
+        }
+        const total = cart.reduce((s, p) => s + p.price, 0);
+        const options = {
+            key: "rzp_test_1DP5mmOlF5G5ag",
+            amount: Math.round(total * 100),
+            currency: "INR",
+            name: "AraMack (Test Mode)",
+            description: "Buy 1 Get 1 Order",
+            handler: function(response) {
+                toast("Payment Successful!");
+                cart = [];
+                update();
+            },
+            prefill: {
+                name: "AraMack Customer",
+                email: "customer@example.com",
+                contact: "9999999999"
+            },
+            theme: {
+                color: "#d4af37"
+            }
+        };
+        const rzp = new Razorpay(options);
+        rzp.open();
+    });
+    
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            header.style.padding = '12px 20px';
+        } else {
+            header.style.boxShadow = 'none';
+            header.style.padding = '16px 20px';
+        }
+    });
+</script>
+</body>
+</html>
