@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PALMONAS — Demi-Gold Buy 1 Get 1 Collection</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style>
+:root{
+  --bg:#fdfaf7; --muted:#6a6a6a; --accent:#1c1c1c;
+  --gold:#d4af37; --shadow:0 8px 32px rgba(0,0,0,0.05);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Arial;background:var(--bg);color:var(--accent);overflow-x:hidden;}
+a{text-decoration:none;color:inherit}
+
+/* header */
+header{background:#fff;border-bottom:1px solid #eee;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:var(--shadow)}
+.brand{font-weight:700;font-size:20px;letter-spacing:.2px}
+.subtitle{font-size:13px;color:var(--muted)}
+.cart{display:flex;align-items:center;gap:8px}
+.cart .count{background:var(--gold);color:#fff;min-width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700}
+
+/* hero */
+.hero{position:relative;height:80vh;min-height:480px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.85);}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%,rgba(253,250,247,0.8) 85%,var(--bg) 100%);}
+.hero-content{position:relative;text-align:center;max-width:700px;padding:0 20px;z-index:2;animation:fadeUp 1.2s ease;}
+.hero h1{font-size:38px;font-weight:700;letter-spacing:.3px;margin-bottom:10px;color:#2c2c2c;}
+.hero p{font-size:17px;color:#555;margin-bottom:22px;line-height:1.5;}
+.hero .btn-primary{background:var(--gold);color:#fff;border:0;padding:12px 26px;border-radius:999px;font-weight:600;font-size:15px;cursor:pointer;transition:transform .2s;}
+.hero .btn-primary:hover{transform:scale(1.04);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* container and grid */
+.container{max-width:1100px;margin:40px auto;padding:0 20px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.card{background:#fff;border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column;transition:all .2s;}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 45px rgba(0,0,0,0.08);}
+.media{width:100%;padding-bottom:100%;position:relative;background:#f8f8f8;}
+.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.info{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.title{font-size:15px;font-weight:600;}
+.price{font-weight:700;}
+.compare{font-size:13px;color:var(--muted);text-decoration:line-through;margin-left:6px;}
+.actions{margin-top:auto;display:flex;gap:8px;}
+.btn{border:0;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:600;cursor:pointer;}
+.btn.primary{background:var(--accent);color:#fff;}
+.btn.ghost{background:#fff;border:1px solid #ccc;color:var(--accent);}
+
+/* checkout bar */
+.checkoutBar{position:fixed;left:0;right:0;bottom:18px;display:flex;justify-content:center;z-index:100;}
+.checkoutInner{background:#fff;box-shadow:0 10px 30px rgba(0,0,0,0.1);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:14px;}
+.checkoutInner label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+.toast{position:fixed;right:18px;bottom:18px;background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.2);opacity:0;transform:translateY(10px);transition:all .25s ease;z-index:150;}
+.toast.show{opacity:1;transform:translateY(0);}
+footer{max-width:1100px;margin:32px auto 80px;padding:0 20px;font-size:13px;color:var(--muted);text-align:center;}
+.policyBox{background:#fff;border-radius:10px;padding:14px;margin-top:10px;box-shadow:var(--shadow);color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="brand">PALMONAS — Buy 1 Get 1</div>
+    <div class="subtitle">Demi-Gold Luxury. Real Shine, Real Value.</div>
+  </div>
+  <div class="cart">
+    <div style="font-size:12px;color:var(--muted)">Bag</div>
+    <div class="count" id="cart-count">0</div>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="https://i.postimg.cc/gJcNhqhx/profile-portrait-of-the-fashion-woman-with-beautiful-golden-mani.jpg" alt="Demi-Gold Jewellery Model">
+  <div class="hero-content">
+    <h1>Radiate Confidence with Demi-Gold Elegance</h1>
+    <p>Discover luxury redefined — demi-gold pieces crafted for brilliance, comfort, and everyday glamour.  
+    Enjoy our exclusive <b>Buy 1 Get 1 Free</b> event and double your sparkle.</p>
+    <button class="btn-primary" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'})">Shop the Collection</button>
+  </div>
+</section>
+
+<main class="container">
+  <h2 style="text-align:center;margin-bottom:20px;font-size:26px;">Curated Demi-Gold Favourites</h2>
+  <div class="grid" id="grid"></div>
+
+  <section style="margin-top:40px">
+    <div class="policyBox">
+      <strong>Terms & Conditions</strong>
+      <p>Offer valid while stocks last. Orders confirmed post-payment. Palmonas reserves the right to modify offers anytime.</p>
+    </div>
+    <div class="policyBox">
+      <strong>Privacy Policy</strong>
+      <p>Your information is used only for order processing. Razorpay handles payments securely; we never store card details.</p>
+    </div>
+    <div class="policyBox">
+      <strong>Refund & Returns</strong>
+      <p>Returns accepted within 7 days for unworn pieces. Refunds processed back to the original payment method after inspection.</p>
+    </div>
+  </section>
+</main>
+
+<div class="checkoutBar">
+  <div class="checkoutInner">
+    <div style="font-size:14px">Total: <b id="total">₹0.00</b></div>
+    <label><input type="checkbox" id="terms"> Accept Terms</label>
+    <button id="checkout" class="btn primary" disabled>Checkout (Razorpay Test)</button>
+  </div>
+</div>
+
+<div id="toast" class="toast">Added to bag</div>
+
+<footer>© Palmonas Replica — Razorpay Test Mode Enabled | Designed for Light Luxury Experience</footer>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+const products=[
+ {title:"Royal Gold Pendant",price:2580,img:"https://i.postimg.cc/J4VbkY4c/DSC08591.jpg"},
+ {title:"Classic Gold Bangle",price:2117,img:"https://i.postimg.cc/9MPcNfZG/bangle-pgb6-24-051-parakkat-jewels-1-60f32cd3-e0d3-4f07-846a-a192863ff465.jpg"},
+ {title:"Elegant Chain Necklace",price:2111,img:"https://i.postimg.cc/mkbTxGyN/DSC03092-e4b8f15d-3311-4c85-96dd-0553bfd8977d-600x.jpg"},
+ {title:"Delicate Charm Bracelet",price:2258,img:"https://i.postimg.cc/cCsdqNBT/DSC03372-60ab08fe-9cd3-46ca-995c-295dbfcf3eb4-600x.jpg"},
+ {title:"Daisy Bloom Pendant",price:2111,img:"https://i.postimg.cc/DZQ7YzL5/DSC08553-600x.jpg"},
+ {title:"Twirl Hoop Earrings",price:2508,img:"https://i.postimg.cc/gJyGB08K/DSC08999-600x.jpg"},
+ {title:"Crystal Drop Necklace",price:2229,img:"https://i.postimg.cc/ZnTJkhxx/DSC09027-600x.jpg"},
+ {title:"Enamel Bangle Set",price:2346,img:"https://i.postimg.cc/tTd9mgWF/enamel-bangle-prgb4-011-parakkat-jewels-1-e94fbeaf-d4c9-481c-bdcd-119c823af391.jpg"},
+ {title:"Golden Heritage Bangle",price:2644,img:"https://i.postimg.cc/9MPcNfZw/golden-bangle-pgb10-031-parakkat-jewels-1-bc95b72d-eb3f-4c11-9b27-37429f6b894d.jpg"},
+ {title:"Royal Twist Bangle",price:2269,img:"https://i.postimg.cc/rmGqYpxx/golden-bangle-pgb41a-26-051-parakkat-jewels-1-89ee5098-0f14-48b0-a799-ac10b8827e07.jpg"}
+];
+const grid=document.getElementById('grid');
+products.forEach((p,i)=>{
+ const card=document.createElement('div');
+ card.className='card';
+ card.innerHTML=`
+   <div class="media"><img src="${p.img}" alt="${p.title}"></div>
+   <div class="info">
+     <div class="title">${p.title}</div>
+     <div><span class="price">₹${p.price.toLocaleString('en-IN')}</span>
+     <span class="compare">₹${(p.price*1.3).toLocaleString('en-IN')}</span></div>
+     <div class="actions"><button class="btn primary" onclick="add(${i})">Add to bag</button></div>
+   </div>`;
+ grid.appendChild(card);
+});
+let cart=[];
+const countEl=document.getElementById('cart-count');
+const totalEl=document.getElementById('total');
+function add(i){cart.push(products[i]);update();toast("Added to bag");}
+function update(){
+ countEl.textContent=cart.length;
+ const t=cart.reduce((s,p)=>s+p.price,0);
+ totalEl.textContent='₹'+t.toLocaleString('en-IN');
+ document.getElementById('checkout').disabled=!document.getElementById('terms').checked;
+}
+function toast(msg){
+ const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+ setTimeout(()=>t.classList.remove('show'),1000);
+}
+document.getElementById('terms').addEventListener('change',e=>{
+ document.getElementById('checkout').disabled=!e.target.checked;
+});
+document.getElementById('checkout').addEventListener('click',()=>{
+ if(cart.length===0){alert('Your bag is empty');return;}
+ const total=cart.reduce((s,p)=>s+p.price,0);
+ const opt={key:"rzp_test_1DP5mmOlF5G5ag",amount:Math.round(total*100),currency:"INR",
+ name:"Palmonas (Test Mode)",description:"Buy 1 Get 1 Order",
+ handler:function(r){alert("Payment Success (Test)\nPayment ID: "+r.razorpay_payment_id);cart=[];update();},
+ theme:{color:"#d4af37"}};
+ new Razorpay(opt).open();
+});
+</script>
+</body>
+</html>
